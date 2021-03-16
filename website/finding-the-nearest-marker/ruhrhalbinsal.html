@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+    
+    <title>Finding the Nearest ATM Location</title>
+        <link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.1/mapsjs-ui.css" />
+    <link rel="stylesheet" type="text/css" href="demo.css" />
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <link rel="stylesheet" type="text/css" href="../template.css" />
+    <script type="text/javascript" src='../test-credentials.js'></script>    
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-core.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-service.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-ui.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-mapevents.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.1/mapsjs-ui.css" />
+    <link rel="stylesheet" type="text/css" href="demo.css" />
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <link rel="stylesheet" type="text/css" href="../template.css" />
+    <script type="text/javascript" src='../test-credentials.js'></script>    
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-core.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-service.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-ui.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-mapevents.js"></script>
+    <style type="text/css">
+      * {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+}
+
+/* Style the header */
+.header {
+  padding: 1px;
+  text-align: center;
+  background: #1abc9c;
+  color: white;
+}
+
+/* Increase the font size of the h1 element */
+.header h1 {
+  font-size: 20px;
+}
+
+/* Style the top navigation bar */
+.navbar {
+  overflow: hidden;
+  background-color: #333;
+}
+
+/* Style the navigation bar links */
+.navbar a {
+  float: left;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 15px 20px;
+  text-decoration: none;
+}
+
+/* Right-aligned link */
+.navbar a.right {
+  float: right;
+}
+
+/* Change color on hover */
+.navbar a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Column container */
+.row {  
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* Create two unequal columns that sits next to each other */
+/* Sidebar/left column */
+.side {
+  flex: 8%;
+  background-color: #f1f1f1;
+  padding: 20px;
+}
+
+
+
+
+.side2 {
+  flex: 8%;
+  background-color: #f1f1f1;
+  padding: 50px;
+}
+
+/* Main column */
+.main {   
+  flex: 70%;
+  background-color: white;
+  padding: 20px;
+}
+
+/* Fake image, just for this example */
+.fakeimg {
+  background-color: #aaa;
+  width: 100%;
+  padding: 20px;
+}
+
+/* Footer */
+.footer {
+  padding: 20px;
+  text-align: center;
+  background: #ddd;
+}
+
+/* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 700px) {
+  .row {   
+    flex-direction: column;
+  }
+}
+
+/* Responsive layout - when the screen is less than 400px wide, make the navigation links stack on top of each other instead of next to each other */
+@media screen and (max-width: 400px) {
+  .navbar a {
+    float: none;
+    width:100%;
+  }
+}
+
+
+
+/* Table CSS */
+#customers {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+      .log {
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        height: 150px;
+        width: 250px;
+        overflow: scroll;
+        background: white;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        font-size: 12px;
+      }
+      .log-entry {
+        padding: 5px;
+        border-bottom: 1px solid #d0d9e9;
+      }
+      .log-entry:nth-child(odd) {
+          background-color: #e1e7f1;
+      }
+
+
+      .topnav {
+  overflow: hidden;
+  background-color: #333;
+}
+
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+</style>
+
+   
+  </head>
+  <body id="markers-on-the-map">
+ 
+ <div class="header">
+  <h1>ATM location Consultants</h1>
+  <marquee width="60%" direction="left" height="100px">
+Consulting banks in essen to open new ATM location or close existing location according to demand analysis and forecasting.
+</marquee>
+</div>
+<div class="navbar">
+  <a href="/Users/akshaydevkate/Desktop/Big%20Data%20Consulting%20Project/WEbsite/Test%201/Website/Home.html">Home </a>
+  <a href="/Users/akshaydevkate/Desktop/Big Data Consulting Project/WEbsite/Test 1/Website/open-infobubble/population.html">Population </a>
+  <a href="/Users/akshaydevkate/Desktop/Big Data Consulting Project/WEbsite/Test 1/Website/open-infobubble/atm.html">ATM</a>
+   <a href="/Users/akshaydevkate/Desktop/Big Data Consulting Project/WEbsite/Test 1/Website/assumptions.html">Project Assumptions</a>
+   <a href="/Users/akshaydevkate/Desktop/Big Data Consulting Project/WEbsite/Test 1/Website/open-infobubble/demand.html">Demand Analysis</a>
+  <a href="/Users/akshaydevkate/Desktop/Big Data Consulting Project/WEbsite/Test 1/Website/About.html" class="right">About Us</a>
+</div>
+
+<div class="row">
+  <div class="side">
+  <h3>Essen Areas</h3>
+   <p> <a href= "/Users/akshaydevkate/Desktop/Big Data Consulting Project/WEbsite/Test 1/Website/finding-the-nearest-marker/steele.html">Steele Essen</a></p>
+    <p><a href= "/Users/akshaydevkate/Desktop/Big Data Consulting Project/WEbsite/Test 1/Website/finding-the-nearest-marker/altenessen.html">Alten Essen</a></p>
+   <p> <a href= "/Users/akshaydevkate/Desktop/Big Data Consulting Project/WEbsite/Test 1/Website/finding-the-nearest-marker/borbeck.html">Borbeck</a></p>
+   <p> <a href= "/Users/akshaydevkate/Desktop/Big Data Consulting Project/WEbsite/Test 1/Website/finding-the-nearest-marker/werden.html">Werden</a> </p>
+   <p> <a href= "/Users/akshaydevkate/Desktop/Big Data Consulting Project/WEbsite/Test 1/Website/finding-the-nearest-marker/ruttenschied.html">Ruttenscheid</a></p>
+   <p> <a href= "/Users/akshaydevkate/Desktop/Big Data Consulting Project/WEbsite/Test 1/Website/finding-the-nearest-marker/essenWest.html">Essen West</a></p>
+   <p> <a href= "/Users/akshaydevkate/Desktop/Big Data Consulting Project/WEbsite/Test 1/Website/finding-the-nearest-marker/stadtmitte.html">Stadt Mitte</a></p>
+   <p> <a href= "/Users/akshaydevkate/Desktop/Big Data Consulting Project/WEbsite/Test 1/Website/finding-the-nearest-marker/katernberg.html">Katernberg</a></p>
+   <p> <a href= "/Users/akshaydevkate/Desktop/Big Data Consulting Project/WEbsite/Test 1/Website/finding-the-nearest-marker/ruhrhalbinsal.html">Ruhr Halbinsal</a></p>
+  </div>
+  <div class="main">
+  
+<iframe title=" Steele Essen ATM " aria-label="Map" id="datawrapper-chart-mFXeE" src="https://datawrapper.dwcdn.net/mFXeE/1/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="414"></iframe><script type="text/javascript">!function(){"use strict";window.addEventListener("message",(function(a){if(void 0!==a.data["datawrapper-height"])for(var e in a.data["datawrapper-height"]){var t=document.getElementById("datawrapper-chart-"+e)||document.querySelector("iframe[src*='"+e+"']");t&&(t.style.height=a.data["datawrapper-height"][e]+"px")}}))}();
+</script>
+
+
+ <body id="markers-on-the-map">
+      <div class="page-header">
+          <h1>ATM locations in Steele Essen</h1>
+          <p>Find nearest ATM by clicking on the Area </p>
+      </div>
+    
+    <div id="map"></div>
+    <h3> Description </h3>
+    <p>Germany's avergae ATM per 10000 adultus is 117 according to literature from 2017 we assume it as 110 in 2021</p>
+    <p>Global average ATM per 10000 adultus is 49</p>
+    <p>According to assumption Essen should have 110 * 4.2 (4.20 lac) ATMs 462</p>
+    <script type="text/javascript" src='demo.js'></script>
+
+<table id = "customers">
+  <tr>
+  <th>Area</th>
+  <th>population</th>
+  <th>ATM</th>
+  <tr>
+  </tr>
+
+  <tr>
+  <td>Steele</td>
+  <td>12%</td>
+  <td>14%</td>
+  <tr>
+  </tr>
+
+ 
+
+</table>
+
+<p>Percentage of population in steele is 12 % of Essen population and percentage of ATMs in steele are 14% of total Essen ATMs. So Steele can reduce 2% of more ATMs in the area. to match with 12% of population</p>
+
+<p>Find out which sectors of bank (Private, Public/ Savings, Cooperative) has more ATM compared to distribution in Essen.</p>
+
+
+<table id = "customers">
+  <tr>
+  <th>Type of Bank</th>
+  <th>Expected %</th>
+  <th>Current Scenario</th>
+  <tr>
+  </tr>
+
+  <tr>
+  <td>Private</td>
+  <td>39.7</td>
+  <td>33%</td>
+  </tr>
+
+
+  <tr>
+  <td>Savings / Public</td>
+  <td>39.9</td>
+  <td>57%</td>
+  </tr>
+
+
+  <tr>
+  <td>Co-operative</td>
+  <td>15.4</td>
+  <td>10%</td>
+  </tr>
+
+
+  <tr>
+  <td>Other</td>
+  <td>5%</td>
+  <td>0%</td>
+  </tr>
+
+</table>
+
+
+<p>According to table above we can see that bank of type Savings have more number of ATMs than expected so they can reduce the ATMs in this area.</p>
+    </div>
+
+ 
+  </div>
+
+   
+
+    
+
+
+
+<div class="footer">
+  <h2>FOM university of applied sciences Essen, Germany.</h2>
+</div>
+
+    
+  </body>
+</html>
