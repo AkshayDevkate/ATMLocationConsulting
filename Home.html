@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+    <title>Opening an Infobubble on a Mouse Click</title>
+    <link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.1/mapsjs-ui.css" />
+    <link rel="stylesheet" type="text/css" href="demo.css" />
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <link rel="stylesheet" type="text/css" href="../template.css" />
+    <script type="text/javascript" src='../test-credentials.js'></script>    
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-core.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-service.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-ui.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-mapevents.js"></script>
+
+
+
+<title>ATM in essen</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+}
+
+/* Style the header */
+.header {
+  padding: 1px;
+  text-align: center;
+  background: #1abc9c;
+  color: white;
+}
+
+/* Increase the font size of the h1 element */
+.header h1 {
+  font-size: 20px;
+}
+
+/* Style the top navigation bar */
+.navbar {
+  overflow: hidden;
+  background-color: #333;
+}
+
+/* Style the navigation bar links */
+.navbar a {
+  float: left;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 15px 20px;
+  text-decoration: none;
+}
+
+/* Right-aligned link */
+.navbar a.right {
+  float: right;
+}
+
+/* Change color on hover */
+.navbar a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Column container */
+.row {  
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* Create two unequal columns that sits next to each other */
+/* Sidebar/left column */
+.side {
+  flex: 8%;
+  background-color: #f1f1f1;
+  padding: 20px;
+}
+
+/* main page divide white in website */
+side {
+  flex: 8%;
+  background-color: white;
+  padding: 20px;
+}
+
+
+/* Main column */
+.main {   
+  flex: 70%;
+  background-color: white;
+  padding: 20px;
+}
+
+/* Fake image, just for this example */
+.fakeimg {
+  background-color: #aaa;
+  width: 100%;
+  padding: 20px;
+}
+
+/* Footer */
+.footer {
+  padding: 20px;
+  text-align: center;
+  background: #ddd;
+}
+
+/* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 700px) {
+  .row {   
+    flex-direction: column;
+  }
+}
+
+/* Responsive layout - when the screen is less than 400px wide, make the navigation links stack on top of each other instead of next to each other */
+@media screen and (max-width: 400px) {
+  .navbar a {
+    float: none;
+    width:100%;
+  }
+}
+
+
+
+/* Table CSS */
+#customers {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>ATM location Consultants</h1>
+  <marquee width="60%" direction="left" height="100px">
+Consulting banks in essen to open new ATM location or close existing location according to demand analysis and forecasting.
+</marquee>
+</div>
+<div class="navbar">
+  <a href="/Users/akshaydevkate/Desktop/Big%20Data%20Consulting%20Project/WEbsite/Test%201/Website/Home.html">Home </a>
+  <a href="/Users/akshaydevkate/Desktop/Big Data Consulting Project/WEbsite/Test 1/Website/open-infobubble/population.html">Population </a>
+  <a href="/Users/akshaydevkate/Desktop/Big Data Consulting Project/WEbsite/Test 1/Website/open-infobubble/atm.html">ATM</a>
+   <a href="/Users/akshaydevkate/Desktop/Big Data Consulting Project/WEbsite/Test 1/Website/webpages/assumptions.html">Project Assumptions</a>
+   <a href="/Users/akshaydevkate/Desktop/Big Data Consulting Project/WEbsite/Test 1/Website/open-infobubble/demand.html">Demand Analysis</a>
+  <a href="/Users/akshaydevkate/Desktop/Big Data Consulting Project/WEbsite/Test 1/Website/webpages/About.html" class="right">About Us</a>
+</div>
+
+<div class="row">
+  <div class="side">
+    <h3>Essen Areas</h3>
+   <p> <a href= "/Users/akshaydevkate/Desktop/Big Data Consulting Project/WEbsite/Test 1/Website/finding-the-nearest-marker/steele.html">Steele Essen</a></p>
+    <p><a href= "/Users/akshaydevkate/Desktop/Big Data Consulting Project/WEbsite/Test 1/Website/finding-the-nearest-marker/altenessen.html">Alten Essen</a></p>
+   <p> <a href= "/Users/akshaydevkate/Desktop/Big Data Consulting Project/WEbsite/Test 1/Website/finding-the-nearest-marker/borbeck.html">Borbeck</a></p>
+   <p> <a href= "/Users/akshaydevkate/Desktop/Big Data Consulting Project/WEbsite/Test 1/Website/finding-the-nearest-marker/werden.html">Werden</a> </p>
+   <p> <a href= "/Users/akshaydevkate/Desktop/Big Data Consulting Project/WEbsite/Test 1/Website/finding-the-nearest-marker/ruttenschied.html">Ruttenscheid</a></p>
+   <p> <a href= "/Users/akshaydevkate/Desktop/Big Data Consulting Project/WEbsite/Test 1/Website/finding-the-nearest-marker/essenWest.html">Essen West</a></p>
+   <p> <a href= "/Users/akshaydevkate/Desktop/Big Data Consulting Project/WEbsite/Test 1/Website/finding-the-nearest-marker/stadtmitte.html">Stadt Mitte</a></p>
+   <p> <a href= "/Users/akshaydevkate/Desktop/Big Data Consulting Project/WEbsite/Test 1/Website/finding-the-nearest-marker/katernberg.html">Katernberg</a></p>
+   <p> <a href= "/Users/akshaydevkate/Desktop/Big Data Consulting Project/WEbsite/Test 1/Website/finding-the-nearest-marker/ruhrhalbinsal.html">Ruhr Halbinsal</a></p>
+  </div>
+  <div class="main">
+    <h2>About Essen City </h2>
+    <img src="/Users/akshaydevkate/Desktop/Big Data Consulting Project/WEbsite/Test 1/Website/Essen.png"  alt="Essen City" width="460" height="345" >
+    <p>Essen is the central and second largest city of the Ruhr, the largest urban area in Germany. With poipulation of 583,109 makes it the tenth largest city in germany and forth largest city of federal state of North Rhine Westphalia.</p>
+     <p>Essen comprises fifty boroughs(a town or district which is an administrative unit) which turn are grouped into nine suburban districts called Stadtbezirke often named aftermost important boroughs</p>
+
+    <br>
+  <body id="markers-on-the-map">
+    <div id="map"></div>
+   
+    <script type="/Users/akshaydevkate/Desktop/Big Data Consulting Project/WEbsite/Test 1/maps-api-for-javascript-examples-master" src='demo.js'></script>
+
+
+
+  </div>
+</div>
+
+<div class="footer">
+  <h2>FOM university of applied sciences Essen, Germany.</h2>
+</div>
+
+</body>
+</html>
