@@ -1,1 +1,1 @@
-var apikey = 'uvVcKIlKsPDQ7sp0AWVR';
+var apikey = 'Enter your heremaps api key here';
